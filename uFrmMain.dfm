@@ -35,7 +35,7 @@ object FrmExemplo: TFrmExemplo
       Caption = 'Capacidade'
     end
     object Label3: TLabel
-      Left = 320
+      Left = 272
       Top = 24
       Width = 84
       Height = 15
@@ -53,14 +53,14 @@ object FrmExemplo: TFrmExemplo
     object edCapCarro: TEdit
       Left = 168
       Top = 40
-      Width = 121
+      Width = 81
       Height = 23
       NumbersOnly = True
       TabOrder = 1
       Text = '4'
     end
     object edQuilometragem: TEdit
-      Left = 320
+      Left = 272
       Top = 40
       Width = 97
       Height = 23
@@ -119,7 +119,7 @@ object FrmExemplo: TFrmExemplo
       Caption = 'Capacidade'
     end
     object Label6: TLabel
-      Left = 320
+      Left = 272
       Top = 24
       Width = 84
       Height = 15
@@ -137,14 +137,14 @@ object FrmExemplo: TFrmExemplo
     object edCapAviao: TEdit
       Left = 168
       Top = 40
-      Width = 121
+      Width = 81
       Height = 23
       NumbersOnly = True
       TabOrder = 1
       Text = '2'
     end
     object edHoraVoo: TEdit
-      Left = 320
+      Left = 272
       Top = 40
       Width = 97
       Height = 23
@@ -182,9 +182,9 @@ object FrmExemplo: TFrmExemplo
     end
   end
   object btSair: TButton
-    Left = 384
+    Left = 400
     Top = 254
-    Width = 89
+    Width = 73
     Height = 25
     Caption = 'Sair'
     TabOrder = 2

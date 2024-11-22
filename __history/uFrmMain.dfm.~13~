@@ -1,7 +1,7 @@
 object FrmExemplo: TFrmExemplo
   Left = 0
   Top = 0
-  Caption = 'FrmExemplo'
+  Caption = 'Exemplo POO'
   ClientHeight = 283
   ClientWidth = 482
   Color = clBtnFace
@@ -10,6 +10,8 @@ object FrmExemplo: TFrmExemplo
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poMainFormCenter
+  OnClose = FormClose
   TextHeight = 15
   object GroupBox1: TGroupBox
     Left = 8
@@ -44,21 +46,27 @@ object FrmExemplo: TFrmExemplo
       Top = 40
       Width = 121
       Height = 23
+      CharCase = ecUpperCase
       TabOrder = 0
+      Text = 'CIVIC'
     end
     object edCapCarro: TEdit
       Left = 168
       Top = 40
       Width = 121
       Height = 23
+      NumbersOnly = True
       TabOrder = 1
+      Text = '4'
     end
     object edQuilometragem: TEdit
       Left = 320
       Top = 40
-      Width = 121
+      Width = 97
       Height = 23
+      NumbersOnly = True
       TabOrder = 2
+      Text = '2000'
     end
     object btCriarCarro: TButton
       Left = 24
@@ -76,6 +84,17 @@ object FrmExemplo: TFrmExemplo
       Height = 25
       Caption = 'Liberar'
       TabOrder = 4
+      OnClick = btLiberarCarroClick
+    end
+    object btMover: TButton
+      Left = 221
+      Top = 80
+      Width = 75
+      Height = 25
+      Caption = 'Mover'
+      Enabled = False
+      TabOrder = 5
+      OnClick = btMoverClick
     end
   end
   object GroupBox2: TGroupBox
@@ -111,21 +130,27 @@ object FrmExemplo: TFrmExemplo
       Top = 40
       Width = 121
       Height = 23
+      CharCase = ecUpperCase
       TabOrder = 0
+      Text = 'AMX A-1'
     end
     object edCapAviao: TEdit
       Left = 168
       Top = 40
       Width = 121
       Height = 23
+      NumbersOnly = True
       TabOrder = 1
+      Text = '2'
     end
     object edHoraVoo: TEdit
       Left = 320
       Top = 40
-      Width = 121
+      Width = 97
       Height = 23
+      NumbersOnly = True
       TabOrder = 2
+      Text = '5000'
     end
     object btCriarAviao: TButton
       Left = 24
@@ -134,6 +159,7 @@ object FrmExemplo: TFrmExemplo
       Height = 25
       Caption = 'Criar'
       TabOrder = 3
+      OnClick = btCriarAviaoClick
     end
     object btLiberarAviao: TButton
       Left = 120
@@ -142,12 +168,23 @@ object FrmExemplo: TFrmExemplo
       Height = 25
       Caption = 'Liberar'
       TabOrder = 4
+      OnClick = btLiberarAviaoClick
+    end
+    object btMoverAviao: TButton
+      Left = 221
+      Top = 80
+      Width = 75
+      Height = 25
+      Caption = 'Mover'
+      Enabled = False
+      TabOrder = 5
+      OnClick = btMoverAviaoClick
     end
   end
   object btSair: TButton
-    Left = 398
+    Left = 384
     Top = 254
-    Width = 75
+    Width = 89
     Height = 25
     Caption = 'Sair'
     TabOrder = 2
