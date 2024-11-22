@@ -1,0 +1,25 @@
+unit uAviao;
+
+interface
+
+type
+  TAviao = class
+  Descricao  : string;
+  Capacidade : integer;
+  HorasVoo   : integer;
+  procedure Mover;
+ end;
+
+implementation
+
+uses
+  Vcl.Dialogs;
+
+{ TAviao }
+
+procedure TAviao.Mover;
+begin
+  ShowMessage(Descricao+' está voando.');
+end;
+
+end.

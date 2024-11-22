@@ -1,0 +1,45 @@
+unit uMeioTransporte;
+
+interface
+
+type
+ TMeioTransporte = class
+ Descricao  : string;
+ Capacidade : integer;
+
+  public
+    Constructor create;
+    destructor destroy; override;
+    procedure Mover(); virtual;
+    procedure Ligar; virtual; abstract;
+end;
+
+implementation
+
+uses
+  Vcl.Dialogs;
+
+{ TMeioTransporte }
+
+constructor TMeioTransporte.create;
+begin
+  inherited;
+  Capacidade := 0;
+  Descricao  := 'Sem Nome';
+end;
+
+procedure TMeioTransporte.Mover;
+begin
+  Ligar;
+  ShowMessage(Descricao + ' Ligado.');
+end;
+
+
+destructor TMeioTransporte.destroy;
+begin
+// seu código de limpeza aqui
+  inherited;
+end;
+
+
+end.

@@ -1,0 +1,26 @@
+unit uMeioTransporte;
+
+interface
+
+type
+ TMeioTransporte = class
+ Descricao  : string;
+ Capacidade : integer;
+ procedure Mover(); virtual;
+ procedure Ligar; virtual; abstract;
+end;
+
+implementation
+
+uses
+  Vcl.Dialogs;
+
+{ TMeioTransporte }
+
+procedure TMeioTransporte.Mover;
+begin
+  Ligar;
+  ShowMessage(Descricao + ' Ligado.');
+end;
+
+end.

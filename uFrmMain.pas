@@ -1,0 +1,184 @@
+unit uFrmMain;
+
+{
+Material extraido do site devmedia
+https://www.devmedia.com.br/introducao-a-poo-partes-1-e-2/17282
+https://www.devmedia.com.br/introducao-a-poo-partes-3-e-4/14775
+
+}
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uMeioTransporte, uCarro, uAviao;
+type
+  TFrmExemplo = class(TForm)
+    GroupBox1: TGroupBox;
+    edDescCarro: TEdit;
+    edCapCarro: TEdit;
+    edQuilometragem: TEdit;
+    btCriarCarro: TButton;
+    btLiberarCarro: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    GroupBox2: TGroupBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    edDescAviao: TEdit;
+    edCapAviao: TEdit;
+    edHoraVoo: TEdit;
+    btCriarAviao: TButton;
+    btLiberarAviao: TButton;
+    btSair: TButton;
+    btMover: TButton;
+    btMoverAviao: TButton;
+    procedure btSairClick(Sender: TObject);
+    procedure btCriarCarroClick(Sender: TObject);
+    procedure btCriarAviaoClick(Sender: TObject);
+    procedure btLiberarCarroClick(Sender: TObject);
+    procedure btLiberarAviaoClick(Sender: TObject);
+    procedure btMoverClick(Sender: TObject);
+    procedure btMoverAviaoClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    procedure VerificaCriacao;
+    procedure LiberarAviao;
+    procedure LiberarCarro;
+    { Private declarations }
+  public
+    { Public declarations }
+    Carro, Aviao : TMeioTransporte;
+  end;
+
+var
+  FrmExemplo: TFrmExemplo;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmExemplo.btCriarAviaoClick(Sender: TObject);
+begin
+  if Aviao = nil then
+  begin
+    Aviao := TAviao.Create;
+
+    if EdDescAviao.Text <> '' then
+    begin
+      Aviao.Descricao := EdDescAviao.Text;
+    end;
+    if EdCapAviao.Text <> '' then
+    begin
+      Aviao.Capacidade := StrToIntDef(EdCapAviao.Text,0);
+    end;
+    if edHoraVoo.Text <> '' then
+    begin
+      TAviao(Aviao).HorasVoo := StrToIntDef(EdHoraVoo.Text,0);
+//    ou ...   (Aviao as TAviao).HorasVoo := StrToIntDef(EdHoraVoo.Text,0);
+//      Aviao.HorasVoo := StrToIntDef(EdHoraVoo.Text,0);
+    end;
+  end;
+  VerificaCriacao;
+end;
+
+procedure TFrmExemplo.btCriarCarroClick(Sender: TObject);
+begin
+  if Carro = nil then
+  begin
+    Carro := TCarro.Create;
+
+    if edDescCarro.Text <> '' then
+    begin
+      Carro.Descricao := EdDescCarro.Text;
+    end;
+    if EdCapCarro.Text <> '' then
+    begin
+      Carro.Capacidade := StrToIntDef(EdCapCarro.Text,0);
+    end;
+    if EdQuilometragem.Text <> '' then
+    begin
+
+      Tcarro(Carro).Quilometragem := StrToIntDef(EdQuilometragem.Text,0);
+//    ou ...  (Carro as Tcarro).Quilometragem := StrToIntDef(EdQuilometragem.Text,0);
+//      Carro.Quilometragem := StrToIntDef(EdQuilometragem.Text,0);
+    end;
+  end;
+  VerificaCriacao;
+end;
+
+procedure TFrmExemplo.VerificaCriacao;
+begin
+  if not assigned(Carro) then
+  begin
+    btMover.Enabled := False;
+  end
+  else
+  begin
+    btMover.Enabled := True;
+  end;
+
+  if not assigned(Aviao) then
+  begin
+    btMoverAviao.Enabled := False;
+  end
+  else
+  begin
+    btMoverAviao.Enabled := True;
+  end;
+end;
+
+Procedure TFrmExemplo.LiberarCarro;
+begin
+  if assigned(Carro) then
+  begin
+    FreeAndNil(Carro);
+  end;
+end;
+
+Procedure TFrmExemplo.LiberarAviao;
+begin
+  if assigned(Aviao) then
+  begin
+    FreeAndNil(Aviao);
+  end;
+end;
+
+procedure TFrmExemplo.btLiberarAviaoClick(Sender: TObject);
+begin
+  LiberarAviao;
+
+  VerificaCriacao;
+end;
+
+procedure TFrmExemplo.btLiberarCarroClick(Sender: TObject);
+begin
+  LiberarCarro;
+
+  VerificaCriacao;
+end;
+
+procedure TFrmExemplo.btMoverAviaoClick(Sender: TObject);
+begin
+  Aviao.Mover;
+end;
+
+procedure TFrmExemplo.btMoverClick(Sender: TObject);
+begin
+  Carro.Mover;
+end;
+
+procedure TFrmExemplo.btSairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFrmExemplo.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  LiberarAviao;
+  LiberarCarro;
+end;
+
+end.

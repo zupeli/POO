@@ -1,0 +1,40 @@
+unit uAviao;
+
+interface
+
+uses uMeioTransporte;
+
+type
+  TAviao = class(TMeioTransporte)
+  HorasVoo   : integer;
+  procedure Mover; override;
+  procedure Ligar; override;
+
+  constructor create;
+ end;
+
+implementation
+
+uses
+  Vcl.Dialogs;
+
+{ TAviao }
+
+constructor TAviao.create;
+begin
+  inherited; // chama o construtor da classe base
+  HorasVoo := 0;
+end;
+
+procedure TAviao.Ligar;
+begin
+  ShowMessage('Ligando o aviao '+Descricao);
+end;
+
+procedure TAviao.Mover;
+begin
+  inherited;
+  ShowMessage(Descricao+' está voando.');
+end;
+
+end.
